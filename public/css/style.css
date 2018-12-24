@@ -1,36 +1,5 @@
 /*
- *                        ___
- *                       /\_ \
- *  _____     ___     ___\//\ \      __
- * /\ '__`\  / __`\  / __`\\ \ \   /'__`\
- * \ \ \_\ \/\ \_\ \/\ \_\ \\_\ \_/\  __/
- *  \ \ ,__/\ \____/\ \____//\____\ \____\
- *   \ \ \/  \/___/  \/___/ \/____/\/____/
- *    \ \_\
- *     \/_/
- *
- * Designed, built, and released under MIT license by @mdo. Learn more at
- * https://github.com/poole/poole.
- */
-
-
-/*
- * Contents
- *
- * Body resets
- * Custom type
- * Messages
- * Container
- * Masthead
- * Posts and pages
- * Pagination
- * Reverse layout
- * Themes
- */
-
-
-/*
- * Body resets
+ * Global resets
  *
  * Update the foundational and global aspects of the page.
  */
@@ -41,28 +10,30 @@
           box-sizing: border-box;
 }
 
-html,
+html {
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font-size: 16px;
+}
 body {
+  line-height: 1.5;
   margin: 0;
   padding: 0;
-}
+  color: #515151;
+  background-color: #fff;
 
-html {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
 }
-@media (min-width: 38em) {
+@media (min-width: 48em) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 58em) {
   html {
     font-size: 20px;
   }
-}
-
-body {
-  color: #515151;
-  background-color: #fff;
-  -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
 }
 
 /* No `:visited` state is required by default (browsers will use `a`) */
@@ -113,7 +84,6 @@ strong {
   color: #303030;
 }
 
-
 /* Lists */
 ul, ol, dl {
   margin-top: 0;
@@ -145,38 +115,6 @@ abbr {
 abbr[title] {
   cursor: help;
   border-bottom: 1px dotted #e5e5e5;
-}
-
-/* Code */
-code,
-pre {
-  font-family: Menlo, Monaco, "Courier New", monospace;
-}
-code {
-  padding: .25em .5em;
-  font-size: 85%;
-  color: #bf616a;
-  background-color: #f9f9f9;
-  border-radius: 3px;
-}
-pre {
-  display: block;
-  margin-top: 0;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  font-size: .8rem;
-  line-height: 1.4;
-  white-space: pre;
-  white-space: pre-wrap;
-  word-break: break-all;
-  word-wrap: break-word;
-  background-color: #f9f9f9;
-}
-pre code {
-  padding: 0;
-  font-size: 100%;
-  color: inherit;
-  background-color: transparent;
 }
 
 /* Pygments via Jekyll */
@@ -253,6 +191,140 @@ tbody tr:nth-child(odd) th {
 
 
 /*
+ * Sidebar
+ *
+ * Flexible banner for housing site name, intro, and "footer" content. Starts
+ * out above content in mobile and later moves to the side with wider viewports.
+ */
+
+.sidebar {
+  text-align: center;
+  color: rgba(255,255,255,.5);
+  background-color: #202020;
+}
+@media (min-width: 48em) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 18rem;
+    text-align: left;
+  }
+}
+
+/* Sidebar links */
+.sidebar a {
+  color: #fff;
+}
+
+/* About section */
+.sidebar-about h1 {
+  color: #fff;
+  margin-top: 0;
+  font-family: "Abril Fatface", serif;
+  font-size: 3.25rem;
+}
+
+/* Sidebar nav */
+.sidebar-nav {
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+}
+.sidebar-nav-item {
+  display: block;
+  line-height: 1.75;
+}
+a.sidebar-nav-item:hover,
+a.sidebar-nav-item:focus {
+  text-decoration: underline;
+}
+.sidebar-nav-item.active {
+  font-weight: bold;
+}
+.copyright {
+  bottom: 2rem;
+  left: 0rem;
+  right: 0rem;
+  padding-bottom: 0.2rem;
+  text-align: center;
+  font-size: 60%;
+}
+@media (min-width: 48em) {
+  .copyright {
+    position: absolute;
+  }
+}
+
+/* Sticky sidebar
+ *
+ * Add the `sidebar-sticky` class to the sidebar's container to affix
+ * the contents to the bottom of the sidebar in tablets and up.
+ */
+
+@media (min-width: 48em) {
+  .sidebar-sticky {
+    position: absolute;
+    right:  1rem;
+    top:    1rem;
+    left:   1rem;
+  }
+}
+
+
+/* Container
+ *
+ * Align the contents of the site above the proper threshold with some margin-fu
+ * with a 25%-wide `.sidebar`.
+ */
+
+.content {
+  padding-top:    4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 48em) {
+  .content {
+    max-width: 38rem;
+    margin-left: 20rem;
+    margin-right: 2rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .content {
+    margin-left: 22rem;
+    margin-right: 4rem;
+  }
+}
+
+
+/*
+ * Reverse layout
+ *
+ * Flip the orientation of the page by placing the `.sidebar` on the right.
+ */
+
+@media (min-width: 48em) {
+  .layout-reverse .sidebar {
+    left: auto;
+    right: 0;
+  }
+  .layout-reverse .content {
+    margin-left: 2rem;
+    margin-right: 20rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .layout-reverse .content {
+    margin-left: 4rem;
+    margin-right: 22rem;
+  }
+}
+
+
+/*
  * Custom type
  *
  * Extend paragraphs with `.lead` for larger introductory text.
@@ -267,8 +339,8 @@ tbody tr:nth-child(odd) th {
 /*
  * Messages
  *
- * Show alert messages to users. You may add it to single elements like a `<p>`,
- * or to a parent if there are multiple elements to show.
+ * Show alert messages to users. You may add it to single elements like
+ * a `<p>`, or to a parent if there are multiple elements to show.
  */
 
 .message {
@@ -320,12 +392,12 @@ tbody tr:nth-child(odd) th {
   letter-spacing: 0;
 }
 
-
 /*
  * Posts and pages
  *
- * Each post is wrapped in `.post` and is used on default and post layouts. Each
- * page is wrapped in `.page` and is only used on the page layout.
+ * Each post is wrapped in `.post` and is used on default and post
+ * layouts. Each page is wrapped in `.page` and is only used on the page
+ * layout.
  */
 
 .page,
@@ -377,12 +449,11 @@ tbody tr:nth-child(odd) th {
   color: inherit;
 }
 
-
 /*
  * Pagination
  *
- * Super lightweight (HTML-wise) blog pagination. `span`s are provide for when
- * there are no more previous or next posts to show.
+ * Super lightweight (HTML-wise) blog pagination. `span`s are provide
+ * for when there are no more previous or next posts to show.
  */
 
 .pagination {
@@ -427,4 +498,46 @@ a.pagination-item:hover {
     border-top-right-radius:    4px;
     border-bottom-right-radius: 4px;
   }
+}
+
+
+/*
+ * Footer
+ */
+.footer {
+  line-height: 0;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0.2rem;
+  background: #eee;
+  background-color: #efefef;
+  text-align: center;
+}
+
+.svg-icon {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+
+.svg-icon.gnupg {
+  background-image: url(../gnupg.svg);
+}
+
+.svg-icon.github {
+  background-image: url(../github.svg);
+}
+
+.svg-icon.email {
+  background-image: url(../email.svg);
+}
+
+.svg-icon.linkedin {
+  background-image: url(../linkedin.svg);
+}
+
+.svg-icon.rss {
+  background-image: url(../rss.svg);
 }
