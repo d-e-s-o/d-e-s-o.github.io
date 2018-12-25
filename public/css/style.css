@@ -298,6 +298,15 @@ a.sidebar-nav-item:focus {
   }
 }
 
+.construction {
+  padding-bottom: 100%;
+  filter: grayscale(100%) opacity(40%);
+  background-image: url(../construction.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 
 /*
  * Reverse layout
