@@ -10,7 +10,6 @@ title:            deso
 tagline:          "Daniel Müller's Projects"
 description:      "Projects and random notes"
 url:              https://github.com/d-e-s-o
-baseurl:          /
 
 author:
   name:           "Daniel Müller"
